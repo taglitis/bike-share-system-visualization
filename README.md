@@ -1,45 +1,41 @@
-# Diamonds Data Exploration
+# Investigation of time related features in Bikesharing system dataset
+
 
 ## Dataset
 
-The data consists of information regarding 54,000 round-cut diamonds, including
-price, carat, and other diamond qualities. The dataset can be found in the
-repository for R's ggplot2 library [here](https://github.com/tidyverse/ggplot2/blob/master/data-raw/diamonds.csv),
-with feature documentation available [here](http://ggplot2.tidyverse.org/reference/diamonds.html).
+The data set includes information about individual rides made in a bike-sharing system covering the greater San Francisco Bay area. This dataset can be downloaded followin this [link](https://drive.google.com/file/d/1gsg4DPGEyyjharedDMKTb6WOhEmOrsfs/view?usp=sharing).
 
 
 ## Summary of Findings
 
-In the exploration, I found that there was a strong relationship between the
-price of a diamond and its carat weight, with modifying effects from the cut,
-color, and clarity grades given to the diamond. The relationship is
-approximately linear between price and carat when price is transformed to be on
-a logarithmic scale and carat transformed to be on a cube-root scale. I found a
-somewhat surprising result initially when the marginal trend for the cut, color,
-and clarity variables indicated that higher diamond quality was associated with
-lower price. However, higher diamond quality was also associated with smaller
-diamonds. When I isolated diamonds of a single carat weight, there was a clear
-positive relationship between higher diamond quality and higher diamond price.
+In the exploration, some data wrangling was completed. 
 
-Outside of the main variables of interest, I verified the relationship between
-diamond carat weight and its x, y, and z dimensions. For the dataset given,
-there was an interesting interaction in the categorical diamond quality
-features. The lower clarity grades looked like they had slightly better
-distribution of cut and color grades than diamonds with the higher clarity
-grades.
+The duration histogram was constructed which is right skewed. After applying log xscale transformation two modes where found at 4 and 13 minutes. Also, time of the day histogram is a bimodal. It shows that the most popular hours of the day when bikes are taken for rides are 8am and 5pm. These time of the correspnod when people go to or coming from work. Log xscale transform just support our finding. Moreover, the relationship between hour of the day and day of the week shows that the most popular time when bikes are taken is 8am and 5pm while on weekends we see that the the number of rides gradually increasing around 8-9am and gradually decreasing around 5-6pm . 
+
+It is interesting to take a look at age and gender distributions. The first shows that 32 is the age when people use the bike sharing system the most. Moreover, it is interesting to note that *men use bike sharing system 35 times more often than women*. In addition, bivariate   exploration between age and gender was considered where we can see that males use bike most often and after that the number of bike rides gradually decreasing. Women use bike sharing system most often at 26-35 years old and the number of rides is significantly lower compare to men at these ages. 
+
+We found 4 the most popular starting stations and within this subset of dataset we found 4 the most popular arrival stations. On the route barchart it is shown that the most common route is between San Francisco Ferry Building station and Montgomery St BART Station. Facatgrid splitted by day of the week shows the distribution of log(duration). They have similar shapes but it is noticeable that on Weekends bikes are used significantly low number of time than during the weekdays. In addition to this plot a violin plot of duration for each popular route is shown. We can see that the routes # 1 and # 5 takes more time with medians about 18 mins. Routes 12 and 13 have no distributions shown and it can be because of distributions are too narrow. The least time spent between station is for routes # 10 and 11. 
+
+One of the founding was that from Monday through Friday the average duration time is about 12.5-13 min, while on weekends this number increasing upto 18-19 minutes.  
+
+Finally, multivariate exploration was conducted. The clustered barchart of the average duration with respect to day of the week splitted by gender was plotted. It shows that during the weekdays the average duration time is almost uniformly distributed. Man average duration time is abour 12 minutes and woman duration time is about 15 minutes. However, on weekends these number increases for men upto 15 minuts and for women it is about 23 minutes. In addition, the average duration was considered with respect ot gender and age. It shows that male duration time is less than it is for female. Men spend abour 12-13 minutes on average when they are 26-70 years old. The maximum duration time for women is about 25 minutes when they are 61-65 years old.      
 
 
 ## Key Insights for Presentation
 
-For the presentation, I focus on just the influence of the four Cs of diamonds
-and leave out most of the intermediate derivations. I start by introducing the
-price variable, followed by the pattern in carat distribution, then plot the
-transformed scatterplot.
+For the presentation, some plots were rearanged and combined with other plots in such way that they carry similar features. Our focus of interest was duration, demographic of riders, average time spent between popular stations. To satisfy ink to plot ration condition for the plot "Dependance of the duration mean value from the day of the week" it was changed from barchart to pointplot.  
 
-Afterwards, I introduce each of the categorical variables one by one. To start,
-I use the violin plots of price and carat across clarity. I'm only looking at
-the clarity grade plot here since it's the clearest example of how the
-categorical quality grades affect diamond pricing. The other two categorical
-variables, cut and color, are covered afterwards, using point plots. I've made
-sure to use different color palettes for each quality variable to make sure it
-is clear that they're different between plots.
+
+## Conclusion 
+
+According to this analysis now it is possible to better understand demographic of the users, time spent riding bikes, time spent between stations. This information can help to develop a strategy to popularize more bike sharing system for example using IT marketing and targeting women or older men. For olderly people it might be a solution by introducing 3 wheel bikes 
+
+## Resources
+
+* extracting month, day, year from datafram:  https://stackoverflow.com/questions/28009370/get-weekday-day-of-week-for-datetime-column-of-dataframe
+
+* .cut method: https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.cut.html
+
+* udacity lectures
+
+* python and pandas documentation
