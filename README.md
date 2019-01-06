@@ -1,4 +1,4 @@
-# Investigation of time related features in Bikesharing system dataset
+# Investigation and visualization of time related features in Bikesharing system dataset
 
 
 ## Dataset
